@@ -3,7 +3,7 @@
 //  FlickrTest
 //
 //  Created by Prashant Gautam on 10/06/18.
-//  Copyright © 2018 Appster. All rights reserved.
+//  Copyright © 2018 gautam1001. All rights reserved.
 //
 
 import UIKit
