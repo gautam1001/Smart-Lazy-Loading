@@ -11,4 +11,5 @@ For the images we will use the Flickr api. Flickr is a wonderful image sharing s
 
 ImageDownloadManager class will create a singleton instance and have NSCache instance to cache the images that have been downloaded.
 
+
 We have inherited the Operation class to PGOperation to mauled the functionality according to our need. I think the properties of the operation subclass are pretty clear to you in terms of functionality. We are monitoring operations changes of state by using KVO.
