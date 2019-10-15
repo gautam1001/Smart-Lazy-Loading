@@ -115,7 +115,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionElementKindSectionFooter {
+        if kind == UICollectionView.elementKindSectionFooter {
             let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerViewReuseIdentifier, for: indexPath) as! CustomFooterView
             self.footerView = aFooterView
             self.footerView?.backgroundColor = UIColor.clear
@@ -127,12 +127,12 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        if elementKind == UICollectionElementKindSectionFooter {
+        if elementKind == UICollectionView.elementKindSectionFooter {
             self.footerView?.prepareInitialAnimation()
         }
     }
     override func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
-        if elementKind == UICollectionElementKindSectionFooter {
+        if elementKind == UICollectionView.elementKindSectionFooter {
             self.footerView?.stopAnimate()
         }
     }

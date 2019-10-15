@@ -269,6 +269,7 @@
 				TargetAttributes = {
 					486E5B1220C3B72D00F92A37 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1110;
 					};
 				};
 			};
@@ -490,6 +491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z7QFBRSB6J;
 				INFOPLIST_FILE = FlickrTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -497,7 +499,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prashant.flickrtest.FlickrTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -507,6 +509,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z7QFBRSB6J;
 				INFOPLIST_FILE = FlickrTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -514,7 +517,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prashant.flickrtest.FlickrTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
