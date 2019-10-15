@@ -53,7 +53,7 @@ extension SearchViewController {
         let flickrPhoto = photoForIndexPath(indexPath: indexPath)
         (cell as! FlickrPhotoCell).imageView.image = #imageLiteral(resourceName: "placeholder")
         ImageDownloadManager.shared.downloadImage(flickrPhoto, indexPath: indexPath) { (image, url, indexPathh, error) in
-            if let indexPathNew = indexPathh, indexPathNew == indexPath {
+            if let indexPathNew = indexPathh {
                 DispatchQueue.main.async {
                     if let getCell = collectionView.cellForItem(at: indexPathNew) {
                         (getCell as? FlickrPhotoCell)!.imageView.image = image
