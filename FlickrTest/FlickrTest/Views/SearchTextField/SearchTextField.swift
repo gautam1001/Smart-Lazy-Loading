@@ -12,7 +12,7 @@ class SearchTextField: UITextField {
     var activityIndicator : UIActivityIndicatorView!
     
     override func awakeFromNib() {
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.hidesWhenStopped = true
         self.addSubview(activityIndicator)
         activityIndicator.frame = self.bounds

@@ -53,9 +53,11 @@ extension SearchViewController {
         let flickrPhoto = photoForIndexPath(indexPath: indexPath)
         (cell as! FlickrPhotoCell).imageView.image = #imageLiteral(resourceName: "placeholder")
         ImageDownloadManager.shared.downloadImage(flickrPhoto, indexPath: indexPath) { (image, url, indexPathh, error) in
-            if let indexPathNew = indexPathh, indexPathNew == indexPath {
+            if let indexPathNew = indexPathh {
                 DispatchQueue.main.async {
-                    (cell as! FlickrPhotoCell).imageView.image = image
+                    if let getCell = collectionView.cellForItem(at: indexPathNew) {
+                        (getCell as? FlickrPhotoCell)!.imageView.image = image
+                    }
                 }
             }
         }
@@ -113,7 +115,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionElementKindSectionFooter {
+        if kind == UICollectionView.elementKindSectionFooter {
             let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerViewReuseIdentifier, for: indexPath) as! CustomFooterView
             self.footerView = aFooterView
             self.footerView?.backgroundColor = UIColor.clear
@@ -125,12 +127,12 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        if elementKind == UICollectionElementKindSectionFooter {
+        if elementKind == UICollectionView.elementKindSectionFooter {
             self.footerView?.prepareInitialAnimation()
         }
     }
     override func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
-        if elementKind == UICollectionElementKindSectionFooter {
+        if elementKind == UICollectionView.elementKindSectionFooter {
             self.footerView?.stopAnimate()
         }
     }
