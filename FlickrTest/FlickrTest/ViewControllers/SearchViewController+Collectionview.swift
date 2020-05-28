@@ -27,6 +27,8 @@ extension SearchViewController {
         // the cell coming back is a FlickrPhotoCell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlickrPhotoCell.identifier, for: indexPath) as! FlickrPhotoCell
         cell.imageView.isUserInteractionEnabled = true
+        //print(#function)
+        //print("indexPath: \(indexPath)")
         return cell
     }
 }
@@ -46,6 +48,8 @@ extension SearchViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        //print(#function)
+        //print("indexPath: \(indexPath)")
         let lastRowIndex = collectionView.numberOfItems(inSection: 0) - 1
         if indexPath.row == lastRowIndex && paging != nil {
             loadMorePhotos()
@@ -64,6 +68,8 @@ extension SearchViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        //print(#function)
+        //print("indexPath: \(indexPath)")
         /* Reduce the priority of the network operation in case the user scrolls and an image is no longer visible. */
         if self.loadMore {return}
         let flickrPhoto = photoForIndexPath(indexPath: indexPath)
@@ -137,7 +143,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
-    //compute the scroll value and play witht the threshold to get desired effect
+    //compute the scroll value and play with the threshold to get desired effect
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let threshold   = 100.0 ;
         let contentOffset = scrollView.contentOffset.y;
@@ -146,12 +152,12 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         let frameHeight = scrollView.bounds.size.height;
         var triggerThreshold  = Float((diffHeight - frameHeight))/Float(threshold);
         triggerThreshold   =  min(triggerThreshold, 0.0)
-        let pullRatio  = min(fabs(triggerThreshold),1.0);
+        let pullRatio  = min(abs(triggerThreshold),1.0);
         self.footerView?.setTransform(inTransform: CGAffineTransform.identity, scaleFactor: CGFloat(pullRatio))
         if pullRatio >= 1 {
             self.footerView?.animateFinal()
         }
-        print("pullRatio:\(pullRatio)")
+        //print("pullRatio:\(pullRatio)")
     }
     
     //compute the offset and call the load method
@@ -160,12 +166,12 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         let contentHeight = scrollView.contentSize.height;
         let diffHeight = contentHeight - contentOffset;
         let frameHeight = scrollView.bounds.size.height;
-        let pullHeight  = fabs(diffHeight - frameHeight);
-        print("pullHeight:\(pullHeight)");
+        let pullHeight  = abs(diffHeight - frameHeight);
+        //print("pullHeight:\(pullHeight)");
         if pullHeight == 0.0
         {
             if (self.footerView?.isAnimatingFinal)! {
-                print("load more trigger")
+                //print("load more trigger")
                 self.footerView?.startAnimate()
             }
         }
